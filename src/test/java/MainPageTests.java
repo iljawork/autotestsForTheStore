@@ -1,4 +1,6 @@
-import org.junit.*;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -9,7 +11,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
-public class mainPage_TestingFunctionality_EverythingWorks {
+public class MainPageTests {
     private static WebDriver driver;
     private static WebDriverWait wait;
 

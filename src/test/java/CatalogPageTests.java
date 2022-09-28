@@ -116,7 +116,6 @@ public class CatalogPageTests {
         driver.findElement(moreDetailedLocator).click();
         //assertion
         Assertions.assertEquals(basketNameElement, driver.findElement(headerBasketLocator).getText(), "Пользователь не попал в корзину");
-
     }
 
 }

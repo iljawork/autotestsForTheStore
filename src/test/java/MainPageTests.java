@@ -30,30 +30,6 @@ public class MainPageTests {
     }
 
     private By enterToAccountLocator = By.className("account"); //Локатор кнопки "войти"
-    private By registrationNameFieldLocator = By.id("reg_username"); //Локатор поля регистрации "Имя"
-    private By registrationEmailFieldLocator = By.id("reg_email"); //Локатор поля регистрации "Е-mail"
-    private By registrationPasswordFieldLocator = By.id("reg_password"); //Локатор поля регистрации "Пароль"
-    private By registerButtonLocator = By.className("custom-register-button"); //Локатор кнопки регистрации при попадании в авторизацию
-    private By registerButton1Locator = By.className("woocommerce-form-register__submit"); //Локатор кнопки регистрации
-    private By successfulRegister = By.cssSelector(".content-page div"); // Локатор текста об успешной регистрации
-
-    @Test
-    public void registerPage_Register_SuccessfulRegister() {
-        //arrange
-        var emailElement = "iljatest8@test.ru";
-        var passwordElement = "tester1337";
-        var nameElement = "iljatest8";
-        //act
-        driver.findElement(enterToAccountLocator).click();
-        driver.findElement(registerButtonLocator).click();
-        driver.findElement(registrationNameFieldLocator).sendKeys(nameElement);
-        driver.findElement(registrationEmailFieldLocator).sendKeys(emailElement);
-        driver.findElement(registrationPasswordFieldLocator).sendKeys(passwordElement);
-        driver.findElement(registerButton1Locator).click();
-        //assert
-        Assertions.assertEquals("Регистрация завершена", driver.findElement(successfulRegister).getText(), "Пользователь не зарегистрировался");
-    }
-
     private By loginRegistrationEmailFieldLocator = By.id("username"); // Локатор авторизации поля "Имя или E=mail"
     private By loginPasswordFieldLocator = By.id("password"); //Локатор авторизации поля пароль
     private By loginButtonLocator = By.className("woocommerce-form-login__submit"); //Локатор кнопки "Аваторизации"

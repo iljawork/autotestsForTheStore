@@ -55,7 +55,7 @@ public class TestingRegistrationAndAuthorization {
         Assertions.assertEquals(nameElement, driver.findElement(profileNameLocator).getText(), "Пользователь не авторизовался");
     }
 
-    private By errorLocator = By.className("woocommerce-error");
+    private By errorLocator = By.className("woocommerce-error"); //Локатор ошибки отсутствия имени
 
     @Test
     public void registerPage_RegistrationWithTheWrongName_WrongRegister() {
@@ -158,10 +158,10 @@ public class TestingRegistrationAndAuthorization {
     }
 
     private By myAccountLocator = By.id("menu-item-30"); //Локатор кнопки "Мой аккаунт"
-    private By forgotPasswordLocator = By.cssSelector(".woocommerce-LostPassword a");
-    private By fieldEmailLocator = By.id("user_login");
-    private By buttonResetPassword = By.className("woocommerce-Button");
-    private By massageSuccessfulResetPassword = By.className("woocommerce-message");
+    private By forgotPasswordLocator = By.cssSelector(".woocommerce-LostPassword a"); //Локатор кнопки "Забыли пароль"
+    private By fieldEmailLocator = By.id("user_login"); //Локатор поля email
+    private By buttonResetPassword = By.className("woocommerce-Button"); // Локатор кнопка Сброса пароля
+    private By massageSuccessfulResetPassword = By.className("woocommerce-message"); //Локаотор сообщения о сброшенном пароле
 
     @Test
     public void loginPage_RecoveryPassword_SuccessfulRecovery() {

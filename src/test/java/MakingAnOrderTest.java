@@ -38,11 +38,11 @@ public class MakingAnOrderTest {
     private By loginButtonLocator = By.className("woocommerce-form-login__submit"); //Локатор кнопки "Аваторизации"
     private By makingAnOrderLocator = By.id("menu-item-31"); //Локатор кнопки "Оформление заказа"
 
-    private By buttonInputPromoLocator = By.className("showcoupon");
-    private By fieldInputPromoLocator = By.id("coupon_code");
-    private By buttonUsePromoLocator = By.xpath("//button[@name='apply_coupon']");
-    private By promoAppliedLocator = By.className("coupon-sert500");
-    private By deletePromoLocator = By.className("woocommerce-remove-coupon");
+    private By buttonInputPromoLocator = By.className("showcoupon"); //Локатор кнопки "Нажмите для ввода купона"
+    private By fieldInputPromoLocator = By.id("coupon_code"); //Локатор поля для ввода купона
+    private By buttonUsePromoLocator = By.xpath("//button[@name='apply_coupon']"); //Локатор кнопки применить купон
+    private By promoAppliedLocator = By.className("coupon-sert500"); //Локатор добовления скидки
+    private By deletePromoLocator = By.className("woocommerce-remove-coupon"); //Локатор удаления скидки
 
     @Test
     public void makingAnOrder_UsePromo_Promo_PromoUsedAndDeleted() {
@@ -65,8 +65,8 @@ public class MakingAnOrderTest {
         Assertions.assertEquals(0, driver.findElements((promoAppliedLocator)).size(), "Скидка не удалилась");
     }
 
-    private By buttonMakingAndOrderLocator = By.id("place_order");
-    private By errorLocator = By.className("woocommerce-error");
+    private By buttonMakingAndOrderLocator = By.id("place_order"); //Локатор кнопки "Оформить заказ"
+    private By errorLocator = By.className("woocommerce-error"); //Локатор ошибки регистрации
 
     @Test
     public void makingAnOrder_MakingAnOrder_BadMakingAnOrder() {
@@ -84,15 +84,15 @@ public class MakingAnOrderTest {
         Assertions.assertEquals(1, driver.findElements((errorLocator)).size(), "Пользователь оформил заказ");
     }
 
-    private By fieldFirstNameLocator = By.id("billing_first_name");
-    private By fieldLastNameLocator = By.id("billing_last_name");
-    private By fieldAddressLocator = By.id("billing_address_1");
-    private By fieldCityLocator = By.id("billing_city");
-    private By fieldAreaLocator = By.id("billing_state");
-    private By fieldPostCodeLocator = By.id("billing_postcode");
-    private By fieldPhoneLocator = By.id("billing_phone");
-    private By choicePayLocator = By.id("payment_method_cod");
-    private By headerOrderGetLocator = By.className("post-title");
+    private By fieldFirstNameLocator = By.id("billing_first_name"); //Локатор поля имя
+    private By fieldLastNameLocator = By.id("billing_last_name"); //Локатор поля фамилия
+    private By fieldAddressLocator = By.id("billing_address_1"); //Локатор поля улицы
+    private By fieldCityLocator = By.id("billing_city"); //локатор поля город
+    private By fieldAreaLocator = By.id("billing_state"); //локатор поля область
+    private By fieldPostCodeLocator = By.id("billing_postcode"); //локатор поля почтовый индекс
+    private By fieldPhoneLocator = By.id("billing_phone"); //локатор поля телефон
+    private By choicePayLocator = By.id("payment_method_cod"); //радиобаттон выбора оплаты
+    private By headerOrderGetLocator = By.className("post-title"); //ЛОкатор заголовка "заказ получен"
 
     @Test
     public void makingAnOrder_MakingAnOrder_GoodMakingAnOrder() {
@@ -126,7 +126,7 @@ public class MakingAnOrderTest {
         Assertions.assertEquals(headerOrderGetElement, driver.findElement(headerOrderGetLocator).getText(), "Заказ не прошёл");
     }
 
-    private By errorFirstNameLocator = By.xpath("//li[@data-id = 'billing_first_name']");
+    private By errorFirstNameLocator = By.xpath("//li[@data-id = 'billing_first_name']"); //Локатор ошибки отсутствия Имени
 
     @Test
     public void makingAnOrder_MakingAnOrderWithoutFirsName_BadMakingAnOrder() {
@@ -158,7 +158,7 @@ public class MakingAnOrderTest {
         Assertions.assertEquals(errorFirstNameElement, driver.findElement(errorFirstNameLocator).getText(), "Заказ выполнен");
     }
 
-    private By errorLastNameLocator = By.xpath("//li[@data-id = 'billing_last_name']");
+    private By errorLastNameLocator = By.xpath("//li[@data-id = 'billing_last_name']"); //Локатор ошибки отсутствия Фамилии
 
     @Test
     public void makingAnOrder_MakingAnOrderWithoutLastName_BadMakingAnOrder() {
@@ -190,7 +190,7 @@ public class MakingAnOrderTest {
         Assertions.assertEquals(errorLastNameElement, driver.findElement(errorLastNameLocator).getText(), "Заказ выполнен");
     }
 
-    private By errorAddressLocator = By.xpath("//li[@data-id = 'billing_address_1']");
+    private By errorAddressLocator = By.xpath("//li[@data-id = 'billing_address_1']"); //Локатор ошибки отсутствия адреса
 
     @Test
     public void makingAnOrder_MakingAnOrderWithoutAddress_BadMakingAnOrder() {
@@ -222,7 +222,7 @@ public class MakingAnOrderTest {
         Assertions.assertEquals(errorAddressElement, driver.findElement(errorAddressLocator).getText(), "Заказ выполнен");
     }
 
-    private By errorCityLocator = By.xpath("//li[@data-id = 'billing_city']");
+    private By errorCityLocator = By.xpath("//li[@data-id = 'billing_city']"); //Локатор ошибки отсутствия города
 
     @Test
     public void makingAnOrder_MakingAnOrderWithoutCity_BadMakingAnOrder() {
@@ -254,7 +254,7 @@ public class MakingAnOrderTest {
         Assertions.assertEquals(errorCityElement, driver.findElement(errorCityLocator).getText(), "Заказ выполнен");
     }
 
-    private By errorAreaLocator = By.xpath("//li[@data-id = 'billing_state']");
+    private By errorAreaLocator = By.xpath("//li[@data-id = 'billing_state']"); //Локатор ошибки отсутствия области
 
     @Test
     public void makingAnOrder_MakingAnOrderWithoutArea_BadMakingAnOrder() {
@@ -286,7 +286,7 @@ public class MakingAnOrderTest {
         Assertions.assertEquals(errorAreaElement, driver.findElement(errorAreaLocator).getText(), "Заказ выполнен");
     }
 
-    private By errorPostCodeLocator = By.xpath("//li[@data-id = 'billing_postcode']");
+    private By errorPostCodeLocator = By.xpath("//li[@data-id = 'billing_postcode']"); //Локатор ошибки отсутствия индекса
 
     @Test
     public void makingAnOrder_MakingAnOrderWithoutPostCode_BadMakingAnOrder() {
@@ -318,7 +318,7 @@ public class MakingAnOrderTest {
         Assertions.assertEquals(errorPostCodeElement, driver.findElement(errorPostCodeLocator).getText(), "Заказ выполнен");
     }
 
-    private By errorPhoneLocator = By.xpath("//li[@data-id = 'billing_phone'][2]");
+    private By errorPhoneLocator = By.xpath("//li[@data-id = 'billing_phone'][2]"); //Локатор ошибки отсутствия телефона
 
     @Test
     public void makingAnOrder_MakingAnOrderWithoutPhone_BadMakingAnOrder() {

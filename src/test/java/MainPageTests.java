@@ -5,7 +5,6 @@ import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
@@ -136,11 +135,11 @@ public class MainPageTests {
     private By saleLocator = By.cssSelector(".img-wrap .onsale"); //Локатор пометки "Скидка"
 
     @Test
-    public void mainPage_SaleBloc_OpenSaleProduct() {
+    public void mainPage_SaleBloc_OpenSaleProduct() throws InterruptedException {
         //arrange
         var saleNameElement = "Скидка!";
         //act
-        wait.until(ExpectedConditions.invisibilityOfElementLocated((productLocator)));
+        Thread.sleep(1000);
         driver.findElement(productLocator).click();
         Assertions.assertEquals(saleNameElement, driver.findElement(saleLocator).getText(), "Скидки на товар нет");
     }

@@ -1,12 +1,17 @@
+import org.apache.commons.io.FileUtils;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.io.File;
+import java.io.IOException;
 import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
@@ -25,7 +30,9 @@ public class CatalogPageTests {
     }
 
     @After
-    public void tearDown() {
+    public void tearDown() throws IOException {
+        var sourceFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+        FileUtils.copyFile(sourceFile, new File("D:\\Skrin\\screenshot1.png"));
         driver.quit();
     }
 

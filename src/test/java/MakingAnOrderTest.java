@@ -67,6 +67,7 @@ public class MakingAnOrderTest {
 
     private By buttonMakingAndOrderLocator = By.id("place_order"); //Локатор кнопки "Оформить заказ"
     private By errorLocator = By.className("woocommerce-error"); //Локатор ошибки регистрации
+    private By loadingLocator = By.className("blockOverlay"); //Локатор загрузки
 
     @Test
     public void makingAnOrder_MakingAnOrder_BadMakingAnOrder() throws InterruptedException {
@@ -79,7 +80,7 @@ public class MakingAnOrderTest {
         driver.findElement(loginButtonLocator).click();
         driver.findElement(makingAnOrderLocator).click();
         //act
-        Thread.sleep(1000);
+        wait.until(ExpectedConditions.invisibilityOfElementLocated((loadingLocator)));
         driver.findElement(buttonMakingAndOrderLocator).click();
         //assert
         Assertions.assertEquals(1, driver.findElements((errorLocator)).size(), "Пользователь оформил заказ");
@@ -322,7 +323,7 @@ public class MakingAnOrderTest {
     private By errorPhoneLocator = By.xpath("//li[@data-id = 'billing_phone'][2]"); //Локатор ошибки отсутствия телефона
 
     @Test
-    public void makingAnOrder_MakingAnOrderWithoutPhone_BadMakingAnOrder() throws InterruptedException {
+    public void makingAnOrder_MakingAnOrderWithoutPhone_BadMakingAnOrder(){
         //arrange
         var errorPhoneElement = "Телефон для выставления счета обязательное поле.";
         var firstNameElement = "Илья";
@@ -346,7 +347,7 @@ public class MakingAnOrderTest {
         driver.findElement(fieldAreaLocator).sendKeys(areaElement);
         driver.findElement(fieldPostCodeLocator).sendKeys(postCodeElement);
         driver.findElement(choicePayLocator).click();
-        Thread.sleep(1000);
+        wait.until(ExpectedConditions.invisibilityOfElementLocated((loadingLocator)));
         driver.findElement(buttonMakingAndOrderLocator).click();
         //assert
         Assertions.assertEquals(errorPhoneElement, driver.findElement(errorPhoneLocator).getText(), "Заказ выполнен");

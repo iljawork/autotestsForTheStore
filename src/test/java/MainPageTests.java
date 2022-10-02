@@ -1,12 +1,18 @@
+import org.apache.commons.io.FileUtils;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.io.File;
+import java.io.IOException;
 import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
@@ -24,7 +30,9 @@ public class MainPageTests {
     }
 
     @After
-    public void tearDown() {
+    public void tearDown() throws IOException {
+        var sourceFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+        FileUtils.copyFile(sourceFile, new File("D:\\Skrin\\screenshot.png"));
         driver.quit();
     }
 
@@ -135,11 +143,11 @@ public class MainPageTests {
     private By saleLocator = By.cssSelector(".img-wrap .onsale"); //Локатор пометки "Скидка"
 
     @Test
-    public void mainPage_SaleBloc_OpenSaleProduct() throws InterruptedException {
+    public void mainPage_SaleBloc_OpenSaleProduct() {
         //arrange
         var saleNameElement = "Скидка!";
         //act
-        Thread.sleep(1000);
+        wait.until(ExpectedConditions.invisibilityOfElementLocated((productLocator)));
         driver.findElement(productLocator).click();
         Assertions.assertEquals(saleNameElement, driver.findElement(saleLocator).getText(), "Скидки на товар нет");
     }

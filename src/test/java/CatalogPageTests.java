@@ -32,7 +32,7 @@ public class CatalogPageTests {
     @After
     public void tearDown() throws IOException {
         var sourceFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-        FileUtils.copyFile(sourceFile, new File("D:\\Skrin\\screenshot1.png"));
+        FileUtils.copyFile(sourceFile, new File("\\Skrin\\"));
         driver.quit();
     }
 

@@ -72,7 +72,6 @@ public class CatalogPageTests {
         var headerCategoryElement = "СТИРАЛЬНЫЕ МАШИНЫ";
         //act
         driver.findElement(choiceCategoryLocator).click();
-        wait.until(ExpectedConditions.invisibilityOfElementLocated((headerCategoryLocator)));
         //assert
         Assertions.assertEquals(headerCategoryElement, driver.findElement(headerCategoryLocator).getText(), "Пользователь попал не в ту категорию");
     }
